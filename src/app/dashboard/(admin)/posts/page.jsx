@@ -8,7 +8,8 @@ export default function AdminPostsTable() {
   const [showModal, setShowModal] = useState(false);
 
   const [postData]=useAddPostsMutation()
-  const { data} = useGetPostQuery();
+  const { data} = useGetPostQuery();// for all post 
+  console.log("dataaa", data?.data)
   const handleSubmitPost = async (data) => {
 const { title, slug,img, content, catSlug, userEmail } = data;
 console.log(data,'fadsf')
