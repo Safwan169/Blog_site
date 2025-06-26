@@ -3,33 +3,38 @@ const { apiSlice } = require("./baseApi");
 export const postApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         addPosts: builder.mutation({
-            query: (data) => {   
+            query: (data) => {
                 //   console.log(data,'this is the data form api' )
-             return   {
-                url:"/posts/addPost",
-                method:"POST",
-                body:data
-            }}
-            
+                return {
+                    url: "/posts/addPost",
+                    method: "POST",
+                    body: data
+                }
+            }
+
         }),
-        getPost:builder.query({
-            query:(params)=>({url: `/posts/allPosts`,params})
+        getPost: builder.query({
+            query: (params = {}) => ({
+                url: '/posts/allPosts',
+                params,
+            }),
         }),
-        deletePost:builder.mutation({
-            query:(id)=>({
-                url:`/posts/deletePost/${id}`,
-                method:"DELETE"
+
+        deletePost: builder.mutation({
+            query: (id) => ({
+                url: `/posts/deletePost/${id}`,
+                method: "DELETE"
             })
         }),
-        upDatePost:builder.mutation({
-            query:(data)=>({
-                url:`/posts/updatePost/${data.id}`,
-                method:"patch",
-                body:data
+        upDatePost: builder.mutation({
+            query: (data) => ({
+                url: `/posts/updatePost/${data.id}`,
+                method: "patch",
+                body: data
             })
-        })  
+        })
 
     })
 })
 
-export const {useAddPostsMutation,useGetPostQuery,useDeletePostMutation,useUpDatePostMutation}=postApi
+export const { useAddPostsMutation, useGetPostQuery, useDeletePostMutation, useUpDatePostMutation } = postApi
