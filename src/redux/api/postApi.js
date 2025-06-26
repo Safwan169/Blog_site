@@ -13,7 +13,7 @@ export const postApi = apiSlice.injectEndpoints({
             
         }),
         getPost:builder.query({
-            query:()=> `/posts/allPosts`
+            query:(params)=>({url: `/posts/allPosts`,params})
         }),
         deletePost:builder.mutation({
             query:(id)=>({
